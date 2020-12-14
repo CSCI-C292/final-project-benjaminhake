@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://FP Assets/Floor.jpg" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 575, 80 )
+
+[node name="FloorStaticBody2D" type="StaticBody2D" groups=[
+"platform",
+]]
+position = Vector2( 524, 578 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"platform",
+]]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 0.246914 )
+texture = ExtResource( 1 )

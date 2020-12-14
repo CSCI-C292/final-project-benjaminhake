@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SpiderStaticBody2D.gd" type="Script" id=1]
+[ext_resource path="res://FP Assets/imageonline-co-whitebackgroundremoved.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 55.3431
+
+[node name="SpiderStaticBody2D" type="Area2D" groups=[
+"enemy",
+]]
+position = Vector2( 713.499, 56.9982 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -24.3859, -320.381 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"enemy",
+]]
+shape = SubResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_SpiderStaticBody2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_SpiderStaticBody2D_body_entered"]

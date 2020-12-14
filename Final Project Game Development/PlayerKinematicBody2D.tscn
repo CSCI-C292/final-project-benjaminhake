@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://PlayerKinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://SwordArea2D.gd" type="Script" id=2]
+[ext_resource path="res://FP Assets/percystationary.png" type="Texture" id=3]
+[ext_resource path="res://PlayerAudioStreamPlayer2D.gd" type="Script" id=4]
+[ext_resource path="res://FP Assets/Sounds/footsteps-1.wav" type="AudioStream" id=5]
+[ext_resource path="res://FP Assets/Sounds/playerDeath.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.87932, 61.2368 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.8563, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.474, 63.1686 )
+
+[node name="PlayerKinematicBody2D" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 89.3969, 392.333 )
+script = ExtResource( 1 )
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"player",
+]]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SwordArea2D" type="Area2D" parent="." groups=[
+"sword",
+]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SwordArea2D" groups=[
+"sword",
+]]
+position = Vector2( 55, -17 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="BodyArea2D" type="Area2D" parent="." groups=[
+"player",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea2D" groups=[
+"player",
+]]
+shape = SubResource( 3 )
+
+[node name="PlayerAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+script = ExtResource( 4 )
+
+[node name="DeathAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="SwordArea2D" to="SwordArea2D" method="_on_SwordArea2D_area_entered"]
+[connection signal="finished" from="PlayerAudioStreamPlayer2D" to="PlayerAudioStreamPlayer2D" method="_on_PlayerAudioStreamPlayer2D_finished"]

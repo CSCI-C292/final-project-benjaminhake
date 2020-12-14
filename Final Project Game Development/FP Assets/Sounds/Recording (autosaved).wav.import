@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Recording (autosaved).wav-8b5c9c2f33f119aefb00f53dd5e4005e.sample"
+
+[deps]
+
+source_file="res://FP Assets/Sounds/Recording (autosaved).wav"
+dest_files=[ "res://.import/Recording (autosaved).wav-8b5c9c2f33f119aefb00f53dd5e4005e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
